@@ -14,12 +14,8 @@ Search::Search()
     count = 0;
 }
 
-//destructor
-Search::~Search()
-{
-
-}
-
+// ALGORITMA BRUTEFORCE TRAVERSAL MATRIX
+// Untuk pencarian huruf pertama yang sesuai
 void Search::find(Puzzle *p, string w)
 {
     int i=0;
@@ -49,8 +45,12 @@ void Search::find(Puzzle *p, string w)
     fcol = j-1;
 }
 
+// Jika ditemukan huruf pertama yang sesuai, bruteforce akan dilanjutkan ke arah berikut
+
+// Pencarian pada arah horizontal ke kanan
 void Search::horizontal_LR(Puzzle *p, string w, int cRow, int cCol)
 {
+    // batasan tidak out of bounds
     if (cCol < p->cols - w.length() + 1)
     {
         int k=1;
@@ -68,8 +68,10 @@ void Search::horizontal_LR(Puzzle *p, string w, int cRow, int cCol)
     }
 }
 
+// Pencarian pada arah horizontal ke kiri
 void Search::horizontal_RL(Puzzle *p, string w, int cRow, int cCol)
 {
+    // batasan tidak out of bounds
     if (cCol >= w.length() - 1)
     {
         int k=1;
@@ -87,8 +89,10 @@ void Search::horizontal_RL(Puzzle *p, string w, int cRow, int cCol)
     }
 }
 
+// Pencarian pada arah vertikal ke bawah
 void Search::vertical_UD(Puzzle *p, string w, int cRow, int cCol)
 {
+    // batasan tidak out of bounds
     if (cRow < p->rows - w.length() + 1)
     {
         int k=1;
@@ -106,8 +110,10 @@ void Search::vertical_UD(Puzzle *p, string w, int cRow, int cCol)
     }
 }
 
+// Pencarian pada arah vertikal ke atas
 void Search::vertical_DU(Puzzle *p, string w, int cRow, int cCol)
 {
+    // batasan tidak out of bounds
     if (cRow >= w.length() - 1)
     {
         int k=1;
@@ -125,8 +131,10 @@ void Search::vertical_DU(Puzzle *p, string w, int cRow, int cCol)
     }
 }
 
+// Pencarian pada arah diagonal ke kanan bawah
 void Search::diagonal_ULDR(Puzzle *p, string w, int cRow, int cCol)
 {
+    // batasan tidak out of bounds
     if ((cCol < p->cols - w.length() + 1) && (cRow < p->rows - w.length() + 1))
     {
         int k=1;
@@ -144,8 +152,10 @@ void Search::diagonal_ULDR(Puzzle *p, string w, int cRow, int cCol)
     }
 }
 
+// Pencarian pada arah diagonal ke kiri atas
 void Search::diagonal_DRUL(Puzzle *p, string w, int cRow, int cCol)
 {
+    // batasan tidak out of bounds
     if ((cRow >= w.length() - 1) && (cCol >= w.length() - 1))
     {
         int k=1;
@@ -163,8 +173,10 @@ void Search::diagonal_DRUL(Puzzle *p, string w, int cRow, int cCol)
     }
 }
 
+// Pencarian pada arah diagonal ke kiri bawah
 void Search::diagonal_URDL(Puzzle *p, string w, int cRow, int cCol)
 {
+    // batasan tidak out of bounds
     if ((cRow < p->rows - w.length() + 1) && (cCol >= w.length() - 1))
     {
         int k=1;
@@ -182,8 +194,11 @@ void Search::diagonal_URDL(Puzzle *p, string w, int cRow, int cCol)
     }
 }
 
+
+// Pencarian pada arah diagonal ke kanan atas
 void Search::diagonal_DLUR(Puzzle *p, string w, int cRow, int cCol)
 {
+    // batasan tidak out of bounds
     if ((cRow >= w.length() - 1) && (cCol < p->cols - w.length() + 1))
     {
         int k=1;

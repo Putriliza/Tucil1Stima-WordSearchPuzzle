@@ -22,25 +22,6 @@ Puzzle::Puzzle(int x, int y)
     }
 }
 
-// Puzzle::Puzzle(int x, int y, char val)
-// {
-//     rows = x;
-//     cols = y;
-//     for (int i=0; i<rows; i++)
-//     {
-//         for (int j=0; j<cols; j++)
-//         {
-//             setElmt(i,j,val);
-//         }
-//     }
-// }
-
-
-Puzzle::~Puzzle()
-{
-    // dealloc();
-}
-
 void Puzzle::setElmt(int x, int y, char val)
 {
     matrix[x][y] = val;
@@ -62,7 +43,7 @@ char Puzzle::getElmt(int x, int y)
     return matrix[x][y];
 }
 
-void Puzzle::displayPuzzle()
+void Puzzle::display()
 {
     for (int i=0; i<rows; i++)
     {
@@ -76,6 +57,7 @@ void Puzzle::displayPuzzle()
 void Puzzle::setResult(int frow, int fcol, string found, string w)
 {
     setDefault();
+
     if (found == "LR") for (int j=fcol; j<fcol+w.length(); j++) setElmt(frow,j,w[j-fcol]);
 
     // else if (found == "RL") for (int j=fcol; j>fcol-w.length(); j--) setElmt(frow,j,w[fcol-j]);
@@ -96,4 +78,8 @@ void Puzzle::setResult(int frow, int fcol, string found, string w)
 
     // else if (found == "DLUR") for (int i=frow; i>frow-w.length(); i--) setElmt(i,fcol+frow-i,w[frow-i]);
     else if (found == "DLUR") for (int j=fcol; j<fcol+w.length(); j++) setElmt(frow+fcol-j,j,w[j-fcol]);
+
+    // yang memakai i-- j-- ada bug di corner case, jadi dimodif
+
+    else cout << "\nKata tidak ditemukan pada puzzle";
 }

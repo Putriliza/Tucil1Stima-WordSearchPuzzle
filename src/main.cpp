@@ -25,38 +25,36 @@ int main()
     {
         Search* s = new Search();
         string str = words1->getWord(i);
-
-        // auto start = chrono::high_resolution_clock::now();
+        Puzzle* out = new Puzzle(puzzle1->rows,puzzle1->cols);
         chrono::steady_clock sc;
+        
         auto start = sc.now();
 
+        // ALGORITMA BRUTEFORCE PENCARIAN KATA
+        // menghasilkan indeks ditemukannya huruf pertama kata dan arah
+        // yang kemudian akan di set ke matrix hasil
         s->find(puzzle1, str);
+        out->setResult(s->frow,s->fcol, s->found, str);
         // cout << endl << s->frow << " " << s->fcol << " " << s->found;
 
         auto end = sc.now();
-        // auto stop = chrono::high_resolution_clock::now();
-        
-        // long long duration = chrono::duration_cast<chrono::microseconds>(stop - start).count();
-        auto duration = static_cast<std::chrono::duration<double>>(end-start);
 
-        Puzzle* out = new Puzzle(puzzle1->rows,puzzle1->cols);
-        out->setResult(s->frow,s->fcol, s->found, str);
         cout << endl << str << endl;
-        out->displayPuzzle();
+        out->display();
         cout << "Perbandingan huruf: " << s->count << endl;
-        // cout << "Durasi: " << duration.count() << " detik" << endl;
 
+        auto duration = static_cast<std::chrono::duration<double>>(end-start);
         durationTotal += duration.count();
         countTotal += s->count;
     }
 
-    cout << endl << "Total durasi: " << durationTotal << " detik" << endl;
-    cout << "Total perbandingan huruf: " << countTotal << endl;
+    cout << "\n------------------------------------------------------\n";
+    cout << "Total durasi: " << durationTotal << " detik\n";
+    cout << "Total perbandingan huruf keseluruhan: " << countTotal << "\n";
 
-
-    string quit;
-    cout << "Press anything to exit: ";
-    cin >> quit;
+    string dummy;
+    cout << "\nPress anything to exit (then enter): ";
+    cin >> dummy;
 
     return 0;
 }

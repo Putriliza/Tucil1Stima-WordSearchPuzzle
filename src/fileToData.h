@@ -3,7 +3,6 @@
 
 #include "puzzle.h"
 #include "words.h"
-#include "search.h"
 
 void fileToData(string filename, Puzzle *p, Words *w);
 

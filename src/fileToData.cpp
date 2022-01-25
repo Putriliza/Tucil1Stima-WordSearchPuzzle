@@ -11,21 +11,20 @@ void fileToData(string filename, Puzzle *p, Words *w)
     string line;
     char letter;
     bool flag = false;
-    int rows = 0, cols = 0, nLetter = 0, nWord=0;
+    int rows = 0, cols = 0, nWord=0;
     int i, j=0;
     
-    // parsing puzzle baris pertama buat nemu banyak kolom
+    // parsing puzzle baris pertama untuk menemukan banyak kolom
     getline(file, line);
     istringstream strline(line);
     while (strline>>letter)
     {
-        // cout << letter << " ";
         p->setElmt(rows, cols, letter);
         cols++;
     }
     rows++;
 
-    // parsing puzzle baris 2-end
+    // parsing puzzle baris kedua sampai akhir puzzle
     while (!flag) {
         getline(file, line);
         istringstream strline(line);
@@ -34,14 +33,13 @@ void fileToData(string filename, Puzzle *p, Words *w)
         {
             if (j >= cols) j = 0;
             i = rows-1;
-            // cout << letter << i << j << " ";
             p->setElmt(i, j, letter);
             j++;
         }
         if (file.peek() == '\n') flag = true;     // parse puzzle done
     }
     
-    // buat ngeskip blank line pemisah puzzle dan words
+    // untuk ngeskip blank line pemisah puzzle dan words
     getline(file, line);
 
     // parsing words yang mau dicari

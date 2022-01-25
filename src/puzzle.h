@@ -6,32 +6,27 @@ using namespace std;
 
 class Puzzle {
     public:
-        int rows, cols;
-        char ** matrix;
-
+        int rows, cols;     // jumlah baris dan kolom efektif
+        char ** matrix;     // matrix untuk menyimpan puzzle
 
         //constructor
         Puzzle();
 
         Puzzle(int x, int y);
 
-        // Puzzle(int x, int y, char val);
-
-        //destructor
-        ~Puzzle();
 
         //setter isi Puzzle
         void setElmt(int x, int y, char val);
 
         void setDefault();
 
+        void setResult(int frow, int fcol, string found, string w);
+
         //getter
         char getElmt(int x, int y);
 
         //display
-        void displayPuzzle();
-
-        void setResult(int frow, int fcol, string found, string w);
+        void display();
 
 };
 

@@ -8,15 +8,12 @@ using namespace std;
 
 class Search{
     public:
-        string found;  //init "none" artinya belum ketemu
-        int frow,fcol; //indeks awal ditemukan
-        int count;     //jumlah total perbandingan huruf
+        string found;       // "none" jika kata belum ditemukan, indikasi arah jika kata sudah ditemukan
+        int frow,fcol;      // indeks penunjuk huruf pertama kata yang ditemukan pada matrix
+        int count;          // jumlah total perbandingan huruf untuk pencarian 1 kata pada puzzle
 
         //constructor
         Search();
-
-        //destructor
-        ~Search();
 
         void find(Puzzle *p, string w);
         void horizontal_LR(Puzzle *p, string w, int cRow, int cCol);
