@@ -11,15 +11,11 @@ class Puzzle {
 
         //constructor
         Puzzle();
-
         Puzzle(int x, int y);
-
 
         //setter isi Puzzle
         void setElmt(int x, int y, char val);
-
         void setDefault();
-
         void setResult(int frow, int fcol, string found, string w);
 
         //getter
@@ -27,7 +23,6 @@ class Puzzle {
 
         //display
         void display();
-
 };
 
 #endif

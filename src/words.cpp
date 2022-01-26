@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
-#include "words.h"
 #include <string>
+#include "words.h"
 using namespace std;
 
 Words::Words()
@@ -15,7 +15,6 @@ Words::Words(int new_total)
     words = new string[total];
 }
 
-
 void Words::setWord(int i, string newWord)
 {
     words[i] = newWord;
@@ -28,8 +27,5 @@ string Words::getWord(int i)
 
 void Words::display()
 {
-    for (int i=0; i<total; i++)
-    {
-        cout << words[i] << endl;
-    }
+    for (int i=0; i<total; i++) cout << words[i] << endl;
 }
